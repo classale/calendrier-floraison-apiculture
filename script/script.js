@@ -18,7 +18,7 @@ for(let label of labels) {
 
 function createArticle(data) {  
     const article = Object.assign(document.createElement("article"), {className: "result"});
-    article.appendChild(Object.assign(document.createElement("img"), {src: "http://" + data.image, alt: data.name}))
+    article.appendChild(Object.assign(document.createElement("img"), {src: data.image, alt: data.name}))
     const contents = article.appendChild(Object.assign(document.createElement("div"), {className: "contents"}))
     const stars = contents.appendChild(Object.assign(document.createElement("div"), {classList: "stars"}))
     for(let _ = 0; _ < data.melliferous; _++) stars.appendChild(Object.assign(document.createElement("span"), {className: "mdi mdi-star"}))
