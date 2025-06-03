@@ -237,6 +237,12 @@ nav > a:hover {
 	width: 100%;
 }
 
+.results {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
 @media screen and (min-width: 960px) {
 	.tablet {
 		display: flex;
