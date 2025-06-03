@@ -56,7 +56,8 @@ const form = document.querySelector("form")
 
 form.addEventListener("submit", async e => {
     e.preventDefault();
-    const query = Object.entries(Object.fromEntries(new FormData(form).entries())).filter(e => e[1]).map(e => e[0] + "=" + e[1].split("-")[1]).join("&");
+    const query = Object.entries(Object.fromEntries(new FormData(form).entries())).filter(e => e[1]).map(e => e.join("=")).join("&");
+    console.log(query)
     const url = `${API_URL}/flowers?${query}`
     const req = await fetch(url)
     console.log(url)
