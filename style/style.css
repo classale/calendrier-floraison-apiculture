@@ -243,6 +243,22 @@ nav > a:hover {
 	gap: 16px;
 }
 
+.result .stars-1 {
+	background-color: #7B1B0A;
+}
+
+.result .stars-2 {
+	background-color: #0A4C7B;
+}
+
+.result .stars-3 {
+	background-color: #3F774A;
+}
+
+form label {
+	cursor: pointer;
+}
+
 @media screen and (min-width: 960px) {
 	.tablet {
 		display: flex;

@@ -20,14 +20,14 @@ function createArticle(data) {
     const article = Object.assign(document.createElement("article"), {className: "result"});
     article.appendChild(Object.assign(document.createElement("img"), {src: data.image, alt: data.name}))
     const contents = article.appendChild(Object.assign(document.createElement("div"), {className: "contents"}))
-    const stars = contents.appendChild(Object.assign(document.createElement("div"), {classList: "stars"}))
+    const stars = contents.appendChild(Object.assign(document.createElement("div"), {className: "stars stars-" + data.melliferous}))
     for(let _ = 0; _ < data.melliferous; _++) stars.appendChild(Object.assign(document.createElement("span"), {className: "mdi mdi-star"}))
     contents.appendChild(Object.assign(document.createElement("h3"), {innerHTML: data.name}))
     const flowering = contents.appendChild(Object.assign(document.createElement("div"), {className: "flowering"}))
     const floraison = flowering.appendChild(Object.assign(document.createElement("span"), {className: "light"}))
     floraison.appendChild(Object.assign(document.createElement("span"), {clasName: "mdi mdi-bee"}))
     floraison.appendChild(document.createTextNode("Floraison"));
-    flowering.appendChild(document.createTextNode(MONTHS[data.startBloom] + " - " + MONTHS[data.endBloom]))
+    flowering.appendChild(document.createTextNode(MONTHS[data.startBloom - 1] + " - " + MONTHS[data.endBloom - 1]))
     contents.appendChild(Object.assign(document.createElement("p"), {innerHTML: data.description}))
     const info = contents.appendChild(Object.assign(document.createElement("div"), {className: "info"}))
     const propolis = info.appendChild(document.createElement("div"))
@@ -57,13 +57,10 @@ const form = document.querySelector("form")
 form.addEventListener("submit", async e => {
     e.preventDefault();
     const query = Object.entries(Object.fromEntries(new FormData(form).entries())).filter(e => e[1]).map(e => e.join("=")).join("&");
-    console.log(query)
     const url = `${API_URL}/flowers?${query}`
     const req = await fetch(url)
-    console.log(url)
     const data = await req.json();
     results.innerHTML = "";
-    console.log(data)
     for(let element of data) {
         results.appendChild(createArticle(element))
     }
