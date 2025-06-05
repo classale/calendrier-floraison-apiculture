@@ -7,6 +7,8 @@ const labels = document.querySelectorAll("form label")
 for(let label of labels) {
     const input = label.querySelector("input[type=date]")
     const p = label.querySelector("p")
+    input.valueAsDate = new Date();
+    p.innerHTML = input.value.replaceAll("-", "/")
     input.addEventListener("input", e => {
         p.innerHTML = input.value.replaceAll("-", "/")
     })
